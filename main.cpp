@@ -102,12 +102,11 @@ int main(void)
     auto mesh1 = StaticMesh::LoadMesh("../resource/sun.obj");
     auto mesh2 = StaticMesh::LoadMesh("../resource/earth.obj");
     auto mesh3 = StaticMesh::LoadMesh("../resource/earth.obj");
-    auto mesh4 = StaticMesh::LoadMesh("../resource/earth.obj");
     auto text = Texture2D::LoadFromFile("../resource/QQ.png");
     auto prog = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");
     auto text2 = Texture2D::LoadFromFile("../resource/earth.png");
     auto prog2 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");
-    auto text3 = Texture2D::LoadFromFile("../resource/moon.png");
+    auto text3 = Texture2D::LoadFromFile("../resource/sun.png");
     auto prog3 = Program::LoadFromFile("../resource/vs.txt", "../resource/fs.txt");
     
     progs.push_back(prog);
@@ -156,7 +155,7 @@ int main(void)
         // draw
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         prog.use();
-        auto model = glm::rotate(glm::mat4(1.0f), static_cast<float>(glfwGetTime()), glm::vec3(0.0f, 1.0f, 0.0f));
+        auto model = glm::rotate(glm::mat4(1.0f), static_cast<float>(glfwGetTime()), glm::vec3(1.0f, 1.0f, 0.0f));
         uniform_model_sun = model;
         text.bindToChannel(0);
         mesh1.draw();

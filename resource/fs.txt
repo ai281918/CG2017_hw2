@@ -51,9 +51,10 @@ void main()
 		}
 	}
 	else if(opt.x == 2){
+		float dis = pow(length(camLightPos - camPos), 2)*0.01;
 		// Diffuse
 		vec3 lightDir = normalize(camLightPos - camPos);
-		float diff = max(dot(camNormal, lightDir), 0.0);
+		float diff = max(dot(camNormal, lightDir), 0.0) / dis;
 		diffuse = diff * lightColor;
 
 		if(opt.y == 0){

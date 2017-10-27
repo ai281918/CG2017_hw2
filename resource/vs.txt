@@ -36,12 +36,12 @@ void main()
     fs_ambient = ambientStrength * lightColor;
 	
 	if(opt.x == 0){
+		float dis = pow(length(camLightPos - camPos), 2)*0.01;
+		
 		// Diffuse 
 		vec3 lightDir = normalize(camLightPos - camPos);
-		float diff = max(dot(camNormal, lightDir), 0.0);
+		float diff = max(dot(camNormal, lightDir), 0.0) / dis;
 		flat_diffuse = diff * lightColor;
-
-		float dis = pow(length(camLightPos - camPos), 2)*0.01;
 
 		if(opt.y == 0){
 			// Specular
@@ -65,7 +65,7 @@ void main()
 
 		// Diffuse 
 		vec3 lightDir = normalize(camLightPos - camPos);
-		float diff = max(dot(camNormal, lightDir), 0.0);
+		float diff = max(dot(camNormal, lightDir), 0.0) / dis;
 		g_diffuse = diff * lightColor;
 		
 		if(opt.y == 0){
