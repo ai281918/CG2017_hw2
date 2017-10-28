@@ -11,19 +11,19 @@ class UniformVariable
 {
 public:
     UniformVariable();
-    explicit UniformVariable(GLint id);
-    UniformVariable(const UniformVariable &rhs);
+    explicit UniformVariable(GLuint program, GLint id);
+    UniformVariable(const UniformVariable &rhs)=default;
     float operator=(float);
     uint32_t operator=(uint32_t);
     int32_t operator=(int32_t);
     glm::uvec2 operator=(const glm::uvec2 &);
     glm::vec2 operator=(const glm::vec2 &);
     glm::vec3 operator=(const glm::vec3 &);
-    glm::vec4 operator=(const glm::vec4 &);
     glm::mat4 operator=(const glm::mat4 &);
     UniformVariable &operator=(const UniformVariable &rhs)=default;
     bool valid() const;
 private:
+    GLuint m_program;
     GLint m_id;
 };
 
